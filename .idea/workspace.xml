@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="848d627f-1295-43ac-a7df-bb1fe6830872" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/com/github/EdwardAndrew/QLearning/action/Action.java" afterPath="$PROJECT_DIR$/src/com/github/EdwardAndrew/QLearning/action/Action.java" />
       <change beforePath="$PROJECT_DIR$/src/com/github/EdwardAndrew/QLearningRobot.java" afterPath="$PROJECT_DIR$/src/com/github/EdwardAndrew/QLearningRobot.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,19 +18,21 @@
       <file leaf-file-name="QLearningRobot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/github/EdwardAndrew/QLearningRobot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="718">
-              <caret line="232" column="0" lean-forward="true" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+            <state relative-caret-position="-374">
+              <caret line="50" column="23" lean-forward="true" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#run#0;class#QLearningRobot#0" expanded="false" />
+                <element signature="e#3544#3587#0" expanded="false" />
                 <element signature="method#getAbsoluteBearing#0;class#QLearningRobot#0" expanded="false" />
-                <element signature="e#5914#5915#0" expanded="true" />
-                <element signature="e#5936#5937#0" expanded="true" />
-                <element signature="method#normaliseQMatrix#0;class#QLearningRobot#0" expanded="false" />
-                <element signature="method#save#0;class#QLearningRobot#0" expanded="false" />
+                <element signature="e#5948#5949#0" expanded="true" />
+                <element signature="e#5970#5971#0" expanded="true" />
                 <element signature="method#load#0;class#QLearningRobot#0" expanded="false" />
                 <element signature="method#getBattlefieldGrid#0;class#QLearningRobot#0" expanded="false" />
                 <element signature="method#getEnemyDistanceState#0;class#QLearningRobot#0" expanded="false" />
+                <element signature="e#12106#12107#0" expanded="true" />
+                <element signature="e#12172#12173#0" expanded="true" />
+                <element signature="e#12241#12242#0" expanded="true" />
+                <element signature="e#12308#12309#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -262,12 +263,12 @@
       <option name="presentableId" value="Default" />
       <updated>1522677651563</updated>
       <workItem from="1522677657124" duration="13057000" />
-      <workItem from="1522736748311" duration="29081000" />
+      <workItem from="1522736748311" duration="29241000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42138000" />
+    <option name="totallyTimeSpent" value="42298000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2568" y="-8" width="2576" height="1416" extended-state="6" />
@@ -321,15 +322,17 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#run#0;class#QLearningRobot#0" expanded="false" />
+            <element signature="e#3544#3587#0" expanded="false" />
             <element signature="method#getAbsoluteBearing#0;class#QLearningRobot#0" expanded="false" />
-            <element signature="e#5914#5915#0" expanded="true" />
-            <element signature="e#5936#5937#0" expanded="true" />
-            <element signature="method#normaliseQMatrix#0;class#QLearningRobot#0" expanded="false" />
-            <element signature="method#save#0;class#QLearningRobot#0" expanded="false" />
+            <element signature="e#5948#5949#0" expanded="true" />
+            <element signature="e#5970#5971#0" expanded="true" />
             <element signature="method#load#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#getBattlefieldGrid#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#getEnemyDistanceState#0;class#QLearningRobot#0" expanded="false" />
+            <element signature="e#12106#12107#0" expanded="true" />
+            <element signature="e#12172#12173#0" expanded="true" />
+            <element signature="e#12241#12242#0" expanded="true" />
+            <element signature="e#12308#12309#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -386,19 +389,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/github/EdwardAndrew/QLearningRobot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="232" column="0" lean-forward="true" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+        <state relative-caret-position="-374">
+          <caret line="50" column="23" lean-forward="true" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#run#0;class#QLearningRobot#0" expanded="false" />
+            <element signature="e#3544#3587#0" expanded="false" />
             <element signature="method#getAbsoluteBearing#0;class#QLearningRobot#0" expanded="false" />
-            <element signature="e#5914#5915#0" expanded="true" />
-            <element signature="e#5936#5937#0" expanded="true" />
-            <element signature="method#normaliseQMatrix#0;class#QLearningRobot#0" expanded="false" />
-            <element signature="method#save#0;class#QLearningRobot#0" expanded="false" />
+            <element signature="e#5948#5949#0" expanded="true" />
+            <element signature="e#5970#5971#0" expanded="true" />
             <element signature="method#load#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#getBattlefieldGrid#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#getEnemyDistanceState#0;class#QLearningRobot#0" expanded="false" />
+            <element signature="e#12106#12107#0" expanded="true" />
+            <element signature="e#12172#12173#0" expanded="true" />
+            <element signature="e#12241#12242#0" expanded="true" />
+            <element signature="e#12308#12309#0" expanded="true" />
           </folding>
         </state>
       </provider>

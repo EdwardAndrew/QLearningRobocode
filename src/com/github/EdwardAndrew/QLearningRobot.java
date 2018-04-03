@@ -113,19 +113,19 @@ public class QLearningRobot extends AdvancedRobot {
         }
     }
 
-    void turnGun(double bearing){
-        double normalisedBearing = normalizeBearing( this.getGunHeading() );
-        double headingDelta = bearing - normalisedBearing;
-
-        if(headingDelta > 0)
-        {
-            turnGunRight( headingDelta );
-        }
-        else
-        {
-            turnGunLeft( Math.abs( headingDelta ) );
-        }
-    }
+//    private void turnGun(double bearing){
+//        double normalisedBearing = normalizeBearing( this.getGunHeading() );
+//        double headingDelta = bearing - normalisedBearing;
+//
+//        if(headingDelta > 0)
+//        {
+//            turnGunRight( headingDelta );
+//        }
+//        else
+//        {
+//            turnGunLeft( Math.abs( headingDelta ) );
+//        }
+//    }
 
     private int getMaximumActionForState(int XPositionState, int YPositionState, int enemyBearingState, int enemyDistanceState)
     {
@@ -220,7 +220,7 @@ public class QLearningRobot extends AdvancedRobot {
                         {
                             if(QValues[xState][yState][enemyBearingState][enemyDistanceState][action] > highestValue)
                             {
-                                QValues[xState][yState][enemyBearingState][enemyDistanceState][action] =  (int)((QValues[xState][yState][enemyBearingState][enemyDistanceState][action] / highestValue)*255);
+                                QValues[xState][yState][enemyBearingState][enemyDistanceState][action] = (QValues[xState][yState][enemyBearingState][enemyDistanceState][action] / highestValue)*255;
                             }
                         }
                     }
@@ -263,8 +263,11 @@ public class QLearningRobot extends AdvancedRobot {
             e.printStackTrace();
         }
         finally {
-            printStream.flush();
-            printStream.close();
+            if(printStream != null)
+            {
+                printStream.flush();
+                printStream.close();
+            }
         }
     }
 
