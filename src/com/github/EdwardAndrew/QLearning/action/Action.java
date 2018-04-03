@@ -10,9 +10,7 @@ public enum Action {
     TURN_SOUTH_WEST(-135),
     TURN_WEST(-90),
     TURN_NORTH_WEST(-45),
-    STAY(-1),
-    MOVE_FORWARD(-1),
-    MOVE_BACKWARD(-1);
+    STAY(-1);
 
 
     private double value;

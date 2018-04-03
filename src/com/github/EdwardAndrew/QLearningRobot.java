@@ -3,8 +3,6 @@ import com.github.EdwardAndrew.QLearning.action.Action;
 import robocode.*;
 
 import java.io.*;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 import java.util.Random;
 
 public class QLearningRobot extends AdvancedRobot {
@@ -30,17 +28,21 @@ public class QLearningRobot extends AdvancedRobot {
     private int enemyDistanceState = 0;
     private int enemyBearingState = 0;
 
-    private final int actionCount = 11;
-    private float gamma = 0.8f;
-    private float epsilon = 0.2f;
+    private final int actionCount = 9;
 
     private float reward = 0.0f;
 
-    int[][][][][] QValues = new int[battleFieldXStateCount][battleFieldYStateCount][enemyBearingStateCount][enemyDistanceStateCount][actionCount];
-
+    private int[][][][][] QValues = new int[battleFieldXStateCount][battleFieldYStateCount][enemyBearingStateCount][enemyDistanceStateCount][actionCount];
 
     public void run()
     {
+        setAdjustRadarForGunTurn(false);
+        setAdjustGunForRobotTurn(true);
+
+        float gamma = 0.8f;
+        float epsilon = 0.2f;
+
+
         // load in Q values
         load();
 
@@ -49,8 +51,8 @@ public class QLearningRobot extends AdvancedRobot {
             reward = 0;
 
             // Find the current states.
-            int lastXPositionState = getBattledfieldGrid( this.getX(), this.getBattleFieldWidth(),  battleFieldXStateCount );
-            int lastYPositionState = getBattledfieldGrid( this.getY(), this.getBattleFieldHeight(), battleFieldYStateCount );
+            int lastXPositionState = getBattlefieldGrid( this.getX(), this.getBattleFieldWidth(),  battleFieldXStateCount );
+            int lastYPositionState = getBattlefieldGrid( this.getY(), this.getBattleFieldHeight(), battleFieldYStateCount );
 
             int lastEnemyBearingState = enemyBearingState;
             int lastEnemyDistanceState  = enemyDistanceState;
@@ -70,37 +72,33 @@ public class QLearningRobot extends AdvancedRobot {
 
             execute();
 
-            int outcomeXPositionState = getBattledfieldGrid( this.getX(), this.getBattleFieldWidth(),  battleFieldXStateCount );
-            int outcomeYPositionState = getBattledfieldGrid( this.getY(), this.getBattleFieldHeight(), battleFieldYStateCount );
-
+            int outcomeXPositionState = getBattlefieldGrid( this.getX(), this.getBattleFieldWidth(),  battleFieldXStateCount );
+            int outcomeYPositionState = getBattlefieldGrid( this.getY(), this.getBattleFieldHeight(), battleFieldYStateCount );
 
             QValues[lastXPositionState][lastYPositionState][lastEnemyBearingState][lastEnemyDistanceState][action] = (byte)(
-                    reward + gamma * getMaximumQValueForState(outcomeXPositionState, outcomeYPositionState, enemyBearingState, enemyDistanceState));
+            reward + gamma * getMaximumQValueForState(outcomeXPositionState, outcomeYPositionState, enemyBearingState, enemyDistanceState));
 
         }
     }
 
-    void performAction(int action)
+    private void performAction(int action)
     {
         if(action == 8)
         {
-        }
-        else if(action == 9)
-        {
-            setAhead(100);
-        }
-        else if(action == 10)
-        {
-            setBack(100);
+            stop();
         }
         else
         {
             turnHeading(Action.values()[action].getBearing());
+            setAhead(100);
         }
-        setTurnGunLeft(45);
+
+        execute();
+
+        turnGunLeft(360);
     }
 
-    void turnHeading(double bearing)
+    private void turnHeading(double bearing)
     {
         double normalisedBearing = normalizeBearing( this.getHeading() );
         double headingDelta = bearing - normalisedBearing;
@@ -115,7 +113,21 @@ public class QLearningRobot extends AdvancedRobot {
         }
     }
 
-    int getMaximumActionForState(int XPositionState, int YPositionState, int enemyBearingState, int enemyDistanceState)
+    void turnGun(double bearing){
+        double normalisedBearing = normalizeBearing( this.getGunHeading() );
+        double headingDelta = bearing - normalisedBearing;
+
+        if(headingDelta > 0)
+        {
+            turnGunRight( headingDelta );
+        }
+        else
+        {
+            turnGunLeft( Math.abs( headingDelta ) );
+        }
+    }
+
+    private int getMaximumActionForState(int XPositionState, int YPositionState, int enemyBearingState, int enemyDistanceState)
     {
         int highestQValueIndex =0;
 
@@ -130,12 +142,12 @@ public class QLearningRobot extends AdvancedRobot {
         return  highestQValueIndex;
     }
 
-    int getMaximumQValueForState(int XPositionState, int YPositionState, int enemyBearingState, int enemyDistanceState){
+    private int getMaximumQValueForState(int XPositionState, int YPositionState, int enemyBearingState, int enemyDistanceState){
        return QValues[XPositionState][YPositionState][enemyBearingState][enemyDistanceState][getMaximumActionForState(XPositionState, YPositionState, enemyBearingState, enemyDistanceState )];
     }
 
 
-    double getAbsoluteBearing(double degrees)
+    private double getAbsoluteBearing(double degrees)
     {
         double absoluteBearing = this.getHeading() + degrees;
 
@@ -148,33 +160,32 @@ public class QLearningRobot extends AdvancedRobot {
     public void onScannedRobot(ScannedRobotEvent scannedRobotEvent)
     {
         enemyDistanceState =  getEnemyDistanceState( scannedRobotEvent.getDistance() );
-        enemyBearingState =  bearingToState( getAbsoluteBearing( scannedRobotEvent.getBearing() ), enemyBearingStateCount ) ;
+        double enemyBearing = getAbsoluteBearing( scannedRobotEvent.getBearing());
+        enemyBearingState =  bearingToState( enemyBearing , enemyBearingStateCount ) ;
 
-        if(enemyDistanceState == 3)
-        {
-            setFire(1);
-        }
-        if(enemyDistanceState == 2)
-        {
-            setFire(2);
-        }
-        if(enemyDistanceState == 1)
-        {
-            setFire(3);
-        }
+        //turnGun(enemyBearing);
+
+
+        fire(1);
+
     }
 
-    public void onDeath(DeathEvent e) { reward -= 15; }
-    public void onHitByBullet(HitByBulletEvent e){ reward -= 10;}
-    public void onHitRobot(HitRobotEvent e){ reward -= 4;}
-    public void onHitWall(HitWallEvent e){reward -= 5;}
-    public void onWin(WinEvent e){reward += 10;}
+    public void onDeath(DeathEvent e) { reward -= 100; }
+    public void onHitByBullet(HitByBulletEvent e){ reward -= 2;}
+    public void onHitRobot(HitRobotEvent e){ reward -= 2;}
+    public  void onBulletHit(BulletHitEvent e) { reward += 5; }
+    public void onHitWall(HitWallEvent e){
+        reward -= 20;
+        //TODO: Check which wall we've hit and drive away from it.
+
+    }
+    public void onWin(WinEvent e){reward += 100;}
     public void onRoundEnded(RoundEndedEvent roundEndedEvent) {
         save();
     }
-    //public void onBulletHit(BulletHitEvent e){ reward += 3;};
 
-    void normaliseQMatrix()
+
+    private void normaliseQMatrix()
     {
         int highestValue = QValues[0][0][0][0][0];
 
@@ -220,7 +231,7 @@ public class QLearningRobot extends AdvancedRobot {
 
     }
 
-    void save(){
+    private void save(){
 
         PrintStream printStream = null;
 
@@ -257,7 +268,7 @@ public class QLearningRobot extends AdvancedRobot {
         }
     }
 
-    void load(){
+    private void load(){
 
         File f = new File(getDataFile("QValues.data").toString());
 
@@ -266,7 +277,6 @@ public class QLearningRobot extends AdvancedRobot {
 //                Scanner readFile = new Scanner(getDataFile("QValues.data").toString());
 //                readFile.useDelimiter(":");
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(getDataFile("QValues.data")));
-
                 for (int xState = 0; xState < battleFieldXStateCount; xState++) {
                     for (int yState = 0; yState < battleFieldYStateCount; yState++) {
                         for (int enemyBearingState = 0; enemyBearingState < enemyBearingStateCount; enemyBearingState++) {
@@ -283,8 +293,6 @@ public class QLearningRobot extends AdvancedRobot {
 //                                        break;
 //                                    }
 
-
-
                                     QValues[xState][yState][enemyBearingState][enemyDistanceState][action] = Integer.parseInt(bufferedReader.readLine());
                                 }
                             }
@@ -293,10 +301,6 @@ public class QLearningRobot extends AdvancedRobot {
                 }
                 bufferedReader.close();
             }
-            catch(InputMismatchException e)
-            {
-                e.printStackTrace();
-            }
             catch(IOException e)
             {
                 e.printStackTrace();
@@ -304,19 +308,19 @@ public class QLearningRobot extends AdvancedRobot {
         }
     }
 
-    static double normalizeBearing(double angle) {
+    private static double normalizeBearing(double angle) {
         while (angle >=  180) angle -= 360;
         while (angle < -180) angle += 360;
         return angle;
     }
 
-    static int getBattledfieldGrid( double position, double battleFieldSize, int numberOfGrids )
+    private static int getBattlefieldGrid(double position, double battleFieldSize, int numberOfGrids )
     {
         double gridXSize = battleFieldSize / numberOfGrids;
         return (int)Math.floor( position / gridXSize );
     }
 
-    static int getEnemyDistanceState(double distance)
+    private static int getEnemyDistanceState(double distance)
     {
         if( distance < 150 ) return 0;
         if( distance < 300 ) return 1;
@@ -324,25 +328,17 @@ public class QLearningRobot extends AdvancedRobot {
         return 3;
     }
 
-    static int getRandomInteger(int min, int max)
+    private static int getRandomInteger(int min, int max)
     {
-        Random rand = new Random();
-
-        int randomNum = rand.nextInt((max - min) + 1) + min;
-
-        return randomNum;
+        return new Random().nextInt((max - min) + 1) + min;
     }
 
-    static float getRandomFloat(float min, float max)
+    private static float getRandomFloat(float min, float max)
     {
-        Random rand = new Random();
-
-        float randomNum = rand.nextFloat() * (max - min) + min;
-
-        return randomNum;
+        return new Random().nextFloat() * (max - min) + min;
     }
 
-    static int bearingToState(double bearing, int totalEnemyBearingStates)
+    private static int bearingToState(double bearing, int totalEnemyBearingStates)
     {
         double stateSize = 360 / totalEnemyBearingStates;
         bearing += stateSize / 2;
