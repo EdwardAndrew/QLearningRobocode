@@ -1,3 +1,6 @@
+/**
+ * @author Edward Andrew
+ */
 package com.github.EdwardAndrew;
 import com.github.EdwardAndrew.QLearning.action.Action;
 import robocode.*;
