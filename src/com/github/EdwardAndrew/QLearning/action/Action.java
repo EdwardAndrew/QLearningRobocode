@@ -1,5 +1,8 @@
 package com.github.EdwardAndrew.QLearning.action;
 
+/***
+ * The Actions that the robot can take.
+ */
 public enum Action {
 
     TURN_NORTH(0),
@@ -10,18 +13,25 @@ public enum Action {
     TURN_SOUTH_WEST(-135),
     TURN_WEST(-90),
     TURN_NORTH_WEST(-45),
-    STAY(-1);
+    STAY(-1); // Value for STAY will not be used.
 
+    private double degrees;
 
-    private double value;
-
-    Action(double value)
+    /***
+     * Constructor, degrees indicate which direction the robot should turn towards.
+     * @param degrees
+     */
+    Action(double degrees)
     {
-        this.value = value;
+        this.degrees = degrees;
     }
 
+    /**
+     * Get the direction of this action.
+     * @return Direction bearing in absolute degrees.
+     */
     public double getBearing()
     {
-        return this.value;
+        return this.degrees;
     }
 }
