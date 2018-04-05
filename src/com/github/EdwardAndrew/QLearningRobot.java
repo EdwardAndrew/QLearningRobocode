@@ -490,6 +490,8 @@ public class QLearningRobot extends AdvancedRobot {
 
     /**
      * Normalises a bearing
+     * This function is provided by third party.
+     * @see <a href="http://mark.random-article.com/weber/java/robocode/lesson4.html">Function Source</a>
      * @param degrees Bearing to be normalised
      * @return Angle normalised between -180 and 180 degrees.
      */
