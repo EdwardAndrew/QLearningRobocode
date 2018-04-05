@@ -35,7 +35,7 @@ public class QLearningRobot extends AdvancedRobot {
     // value of 1 means random action will be taken 100% of the time
     float epsilon = 1.0f;
     // How much to decrement the epsilon by after each battle.
-    float epsilonDecrement = 0.0001f;
+    float epsilonDecrement = 0.00001f;
     // The epsilon won't go lower than this.
     float epsilonLowerLimit = 0.01f;
 

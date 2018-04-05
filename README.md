@@ -27,7 +27,7 @@ as it is the first value in the `QValues.data` file.
 
 ## Using Trained Data
 If you do not use the existing trained data sets, the robot will attempt to begin training again.
-This may take a long time as the epsilon value will start at `1.0f` and gradually decrease at a rate of `0.0001f`
+This may take a long time as the epsilon value will start at `1.0f` and gradually decrease at a rate of `0.00001f`
 per battle the robot fights. Using the provided trained data is a good way to avoid waiting for the robot to train itself!
 
 - After copy the robot's file to robocode using either of the methods above, navigate to the

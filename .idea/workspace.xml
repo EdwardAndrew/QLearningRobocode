@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="848d627f-1295-43ac-a7df-bb1fe6830872" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/CHA2555-Artificial-Intelligence/com/github/EdwardAndrew/QLearningRobot.properties" afterPath="$PROJECT_DIR$/out/production/CHA2555-Artificial-Intelligence/com/github/EdwardAndrew/QLearningRobot.properties" />
-      <change beforePath="$PROJECT_DIR$/src/com/github/EdwardAndrew/QLearning/action/Action.java" afterPath="$PROJECT_DIR$/src/com/github/EdwardAndrew/QLearning/action/Action.java" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change beforePath="$PROJECT_DIR$/src/com/github/EdwardAndrew/QLearningRobot.java" afterPath="$PROJECT_DIR$/src/com/github/EdwardAndrew/QLearningRobot.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,10 +21,11 @@
       <file leaf-file-name="QLearningRobot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/github/EdwardAndrew/QLearningRobot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="46" lean-forward="false" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
+            <state relative-caret-position="629">
+              <caret line="37" column="33" lean-forward="false" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
                 <element signature="docComment;method#run#0;class#QLearningRobot#0" expanded="false" />
                 <element signature="method#run#0;class#QLearningRobot#0" expanded="false" />
                 <element signature="docComment;method#selectAction#0;class#QLearningRobot#0" expanded="false" />
@@ -59,11 +58,11 @@
                 <element signature="docComment;method#normaliseBearing#0;class#QLearningRobot#0" expanded="false" />
                 <element signature="method#normaliseBearing#0;class#QLearningRobot#0" expanded="false" />
                 <element signature="docComment;method#getRandomInteger#0;class#QLearningRobot#0" expanded="false" />
-                <element signature="e#20054#20055#0" expanded="true" />
-                <element signature="e#20120#20121#0" expanded="true" />
+                <element signature="e#20055#20056#0" expanded="true" />
+                <element signature="e#20121#20122#0" expanded="true" />
                 <element signature="docComment;method#getRandomFloat#0;class#QLearningRobot#0" expanded="false" />
-                <element signature="e#20440#20441#0" expanded="true" />
-                <element signature="e#20507#20508#0" expanded="true" />
+                <element signature="e#20441#20442#0" expanded="true" />
+                <element signature="e#20508#20509#0" expanded="true" />
                 <element signature="docComment;method#round#0;class#QLearningRobot#0" expanded="false" />
                 <element signature="method#round#0;class#QLearningRobot#0" expanded="false" />
                 <element signature="docComment;method#getQuantisedEnemyDistance#0;class#QLearningRobot#0" expanded="false" />
@@ -321,19 +320,19 @@
       <workItem from="1522736748311" duration="29510000" />
       <workItem from="1522844022426" duration="14801000" />
       <workItem from="1522868936120" duration="23380000" />
-      <workItem from="1522924038083" duration="65000" />
+      <workItem from="1522924038083" duration="265000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80813000" />
+    <option name="totallyTimeSpent" value="81013000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2568" y="-8" width="2576" height="1416" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -356,7 +355,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -380,6 +378,7 @@
           <caret line="107" column="41" lean-forward="false" selection-start-line="107" selection-start-column="41" selection-end-line="107" selection-end-column="41" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#run#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#run#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#selectAction#0;class#QLearningRobot#0" expanded="false" />
@@ -412,11 +411,11 @@
             <element signature="docComment;method#normaliseBearing#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#normaliseBearing#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#getRandomInteger#0;class#QLearningRobot#0" expanded="false" />
-            <element signature="e#20054#20055#0" expanded="true" />
-            <element signature="e#20120#20121#0" expanded="true" />
+            <element signature="e#20055#20056#0" expanded="true" />
+            <element signature="e#20121#20122#0" expanded="true" />
             <element signature="docComment;method#getRandomFloat#0;class#QLearningRobot#0" expanded="false" />
-            <element signature="e#20440#20441#0" expanded="true" />
-            <element signature="e#20507#20508#0" expanded="true" />
+            <element signature="e#20441#20442#0" expanded="true" />
+            <element signature="e#20508#20509#0" expanded="true" />
             <element signature="docComment;method#round#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#round#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#getQuantisedEnemyDistance#0;class#QLearningRobot#0" expanded="false" />
@@ -448,6 +447,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#run#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#run#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#selectAction#0;class#QLearningRobot#0" expanded="false" />
@@ -480,11 +480,11 @@
             <element signature="docComment;method#normaliseBearing#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#normaliseBearing#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#getRandomInteger#0;class#QLearningRobot#0" expanded="false" />
-            <element signature="e#20054#20055#0" expanded="true" />
-            <element signature="e#20120#20121#0" expanded="true" />
+            <element signature="e#20055#20056#0" expanded="true" />
+            <element signature="e#20121#20122#0" expanded="true" />
             <element signature="docComment;method#getRandomFloat#0;class#QLearningRobot#0" expanded="false" />
-            <element signature="e#20440#20441#0" expanded="true" />
-            <element signature="e#20507#20508#0" expanded="true" />
+            <element signature="e#20441#20442#0" expanded="true" />
+            <element signature="e#20508#20509#0" expanded="true" />
             <element signature="docComment;method#round#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#round#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#getQuantisedEnemyDistance#0;class#QLearningRobot#0" expanded="false" />
@@ -503,6 +503,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#run#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#run#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#selectAction#0;class#QLearningRobot#0" expanded="false" />
@@ -535,11 +536,11 @@
             <element signature="docComment;method#normaliseBearing#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#normaliseBearing#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#getRandomInteger#0;class#QLearningRobot#0" expanded="false" />
-            <element signature="e#20054#20055#0" expanded="true" />
-            <element signature="e#20120#20121#0" expanded="true" />
+            <element signature="e#20055#20056#0" expanded="true" />
+            <element signature="e#20121#20122#0" expanded="true" />
             <element signature="docComment;method#getRandomFloat#0;class#QLearningRobot#0" expanded="false" />
-            <element signature="e#20440#20441#0" expanded="true" />
-            <element signature="e#20507#20508#0" expanded="true" />
+            <element signature="e#20441#20442#0" expanded="true" />
+            <element signature="e#20508#20509#0" expanded="true" />
             <element signature="docComment;method#round#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#round#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#getQuantisedEnemyDistance#0;class#QLearningRobot#0" expanded="false" />
@@ -558,6 +559,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#run#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#run#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#selectAction#0;class#QLearningRobot#0" expanded="false" />
@@ -590,11 +592,11 @@
             <element signature="docComment;method#normaliseBearing#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#normaliseBearing#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#getRandomInteger#0;class#QLearningRobot#0" expanded="false" />
-            <element signature="e#20054#20055#0" expanded="true" />
-            <element signature="e#20120#20121#0" expanded="true" />
+            <element signature="e#20055#20056#0" expanded="true" />
+            <element signature="e#20121#20122#0" expanded="true" />
             <element signature="docComment;method#getRandomFloat#0;class#QLearningRobot#0" expanded="false" />
-            <element signature="e#20440#20441#0" expanded="true" />
-            <element signature="e#20507#20508#0" expanded="true" />
+            <element signature="e#20441#20442#0" expanded="true" />
+            <element signature="e#20508#20509#0" expanded="true" />
             <element signature="docComment;method#round#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#round#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#getQuantisedEnemyDistance#0;class#QLearningRobot#0" expanded="false" />
@@ -646,10 +648,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/github/EdwardAndrew/QLearningRobot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="46" lean-forward="false" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
+        <state relative-caret-position="629">
+          <caret line="37" column="33" lean-forward="false" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#run#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#run#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#selectAction#0;class#QLearningRobot#0" expanded="false" />
@@ -682,11 +685,11 @@
             <element signature="docComment;method#normaliseBearing#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#normaliseBearing#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#getRandomInteger#0;class#QLearningRobot#0" expanded="false" />
-            <element signature="e#20054#20055#0" expanded="true" />
-            <element signature="e#20120#20121#0" expanded="true" />
+            <element signature="e#20055#20056#0" expanded="true" />
+            <element signature="e#20121#20122#0" expanded="true" />
             <element signature="docComment;method#getRandomFloat#0;class#QLearningRobot#0" expanded="false" />
-            <element signature="e#20440#20441#0" expanded="true" />
-            <element signature="e#20507#20508#0" expanded="true" />
+            <element signature="e#20441#20442#0" expanded="true" />
+            <element signature="e#20508#20509#0" expanded="true" />
             <element signature="docComment;method#round#0;class#QLearningRobot#0" expanded="false" />
             <element signature="method#round#0;class#QLearningRobot#0" expanded="false" />
             <element signature="docComment;method#getQuantisedEnemyDistance#0;class#QLearningRobot#0" expanded="false" />
