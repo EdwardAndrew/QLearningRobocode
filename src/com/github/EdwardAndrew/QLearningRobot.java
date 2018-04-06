@@ -50,8 +50,10 @@ public class QLearningRobot extends AdvancedRobot {
         setAdjustRadarForGunTurn(true);
         setAdjustGunForRobotTurn(true);
 
-        // Learning parameter, 1.0 means we only care about the future reward. 0 means we only care about the immediate reward.
-        float gamma = 0.8f;
+        // Discount factor.
+        float gamma = 0.9f;
+        // Learning parameter.
+        float alpha = 0.1f;
 
         // load in Q values
         load();
@@ -92,8 +94,10 @@ public class QLearningRobot extends AdvancedRobot {
             int outcomeYPositionState = getQuantisedBattlefieldPosition( this.getY(), this.getBattleFieldHeight(), battleFieldYStateCount );
 
             // Update the QValue.
+            // Q(St,At) = (1-alpha) * Q(St,At) + alpha * Rt + gamma * Max(Q(St+1,a))
             QValues[currentEnemyXState][currentEnemyYState][lastEnemyBearingState][lastEnemyDistanceState][action] =
-            reward + gamma * getMaximumQValueForState(outcomeXPositionState, outcomeYPositionState, enemyBearingState, enemyDistanceState);
+                    (1 - alpha) * (QValues[currentEnemyXState][currentEnemyYState][lastEnemyBearingState][lastEnemyDistanceState][action]) +
+                    alpha * reward + gamma * getMaximumQValueForState(outcomeXPositionState, outcomeYPositionState, enemyBearingState, enemyDistanceState);
 
             xState = outcomeXPositionState;
             yState = outcomeYPositionState;
@@ -330,6 +334,13 @@ public class QLearningRobot extends AdvancedRobot {
      */
     @Override public  void onBulletHit(BulletHitEvent bulletHitEvent) { reward += 5; }
 
+    /***
+     * Called by Robocode when the robot win's the round.
+     * @param winEvent Contains information about the what
+     *                 the round being won.
+     */
+    @Override public void onWin(WinEvent winEvent){reward += 15;}
+
     /**
      * Called by robocode when the round ends.
      * @param roundEndedEvent Contains information about the round.
@@ -462,7 +473,7 @@ public class QLearningRobot extends AdvancedRobot {
                         {
                             if(QValues[xState][yState][enemyBearingState][enemyDistanceState][action] > highestValue)
                             {
-                                QValues[xState][yState][enemyBearingState][enemyDistanceState][action] = (QValues[xState][yState][enemyBearingState][enemyDistanceState][action] / highestValue)*255;
+                                QValues[xState][yState][enemyBearingState][enemyDistanceState][action] = (QValues[xState][yState][enemyBearingState][enemyDistanceState][action] / highestValue);
                             }
                         }
                     }
