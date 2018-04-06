@@ -59,49 +59,53 @@ public class QLearningRobot extends AdvancedRobot {
         // load in Q values
         load();
 
-        while(true){
-            // Reset reward value.
-            reward = 0;
+        try {
+            while (true) {
+                // Reset reward value.
+                reward = 0;
 
-            // Find the current states.
-            int currentEnemyXState = getQuantisedBattlefieldPosition( this.getX(), this.getBattleFieldWidth(),  battleFieldXStateCount );
-            int currentEnemyYState = getQuantisedBattlefieldPosition( this.getY(), this.getBattleFieldHeight(), battleFieldYStateCount );
-            int lastEnemyBearingState = enemyBearingState;
-            int lastEnemyDistanceState  = enemyDistanceState;
-            xState = currentEnemyXState;
-            yState = currentEnemyYState;
+                // Find the current states.
+                int currentEnemyXState = getQuantisedBattlefieldPosition(this.getX(), this.getBattleFieldWidth(), battleFieldXStateCount);
+                int currentEnemyYState = getQuantisedBattlefieldPosition(this.getY(), this.getBattleFieldHeight(), battleFieldYStateCount);
+                int lastEnemyBearingState = enemyBearingState;
+                int lastEnemyDistanceState = enemyDistanceState;
+                xState = currentEnemyXState;
+                yState = currentEnemyYState;
 
-            int action;
+                int action;
 
-            // If returned value is below epsilon, perform a random action. Otherwise perform learned action.
-            if(getRandomFloat(0,1) < epsilon )
-            {
-                action = getRandomInteger(0, actionCount-1);
+                // If returned value is below epsilon, perform a random action. Otherwise perform learned action.
+                if (getRandomFloat(0, 1) < epsilon) {
+                    action = getRandomInteger(0, actionCount - 1);
+                } else {
+                    // Get the action with the highest QValue for this state.
+                    action = getMaximumActionForState(currentEnemyXState, currentEnemyYState, lastEnemyBearingState, lastEnemyDistanceState);
+                }
+
+                selectAction(action);
+                execute();
+                // After performing action, drive forwards and turn the radar 360 degrees.
+                setTurnRadarLeft(360);
+                ahead(100);
+
+                // Calculate the new current states. We can only detect a change in this function.
+                int outcomeXPositionState = getQuantisedBattlefieldPosition(this.getX(), this.getBattleFieldWidth(), battleFieldXStateCount);
+                int outcomeYPositionState = getQuantisedBattlefieldPosition(this.getY(), this.getBattleFieldHeight(), battleFieldYStateCount);
+
+                // Update the QValue.
+                // Q(St,At) = (1-alpha) * Q(St,At) + alpha * Rt + gamma * Max(Q(St+1,a))
+                QValues[currentEnemyXState][currentEnemyYState][lastEnemyBearingState][lastEnemyDistanceState][action] =
+                        (1 - alpha) * (QValues[currentEnemyXState][currentEnemyYState][lastEnemyBearingState][lastEnemyDistanceState][action]) +
+                                alpha * reward + gamma * getMaximumQValueForState(outcomeXPositionState, outcomeYPositionState, enemyBearingState, enemyDistanceState);
+
+                xState = outcomeXPositionState;
+                yState = outcomeYPositionState;
             }
-            else
-            {
-                // Get the action with the highest QValue for this state.
-                action = getMaximumActionForState(currentEnemyXState, currentEnemyYState, lastEnemyBearingState, lastEnemyDistanceState);
-            }
-
-            selectAction(action);
-            execute();
-            // After performing action, drive forwards and turn the radar 360 degrees.
-            setTurnRadarLeft(360);
-            ahead(100);
-
-            // Calculate the new current states. We can only detect a change in this function.
-            int outcomeXPositionState = getQuantisedBattlefieldPosition( this.getX(), this.getBattleFieldWidth(),  battleFieldXStateCount );
-            int outcomeYPositionState = getQuantisedBattlefieldPosition( this.getY(), this.getBattleFieldHeight(), battleFieldYStateCount );
-
-            // Update the QValue.
-            // Q(St,At) = (1-alpha) * Q(St,At) + alpha * Rt + gamma * Max(Q(St+1,a))
-            QValues[currentEnemyXState][currentEnemyYState][lastEnemyBearingState][lastEnemyDistanceState][action] =
-                    (1 - alpha) * (QValues[currentEnemyXState][currentEnemyYState][lastEnemyBearingState][lastEnemyDistanceState][action]) +
-                    alpha * reward + gamma * getMaximumQValueForState(outcomeXPositionState, outcomeYPositionState, enemyBearingState, enemyDistanceState);
-
-            xState = outcomeXPositionState;
-            yState = outcomeYPositionState;
+        }
+        catch(ThreadDeath e)
+        {
+            normaliseQValues();
+            save();
         }
     }
 
