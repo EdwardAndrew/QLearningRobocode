@@ -5,6 +5,7 @@ package com.github.EdwardAndrew;
 import com.github.EdwardAndrew.QLearning.action.Action;
 import robocode.*;
 
+import java.awt.geom.Point2D;
 import java.io.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -241,7 +242,7 @@ public class QLearningRobot extends AdvancedRobot {
         double bulletSpeed = 20 - firePower * 3;
 
         // Calculate bullet travel time.
-        double timeForBulletToHit = enemy.getDistance() / (bulletSpeed + Math.sqrt((relativeXVelocity * relativeXVelocity)+(relativeYVelocity*relativeYVelocity)));
+        double timeForBulletToHit = enemy.getDistance() / (bulletSpeed + Point2D.distance(0,0,relativeXVelocity,relativeYVelocity));
 
         // Predict enemy location at this time.
         double predicatedRelativeEnemyX = currentRelativeEnemyX + (relativeXVelocity * timeForBulletToHit);
@@ -440,7 +441,7 @@ public class QLearningRobot extends AdvancedRobot {
      * Normalises the QValues.
      */
     private void normaliseQValues(){
-        float highestValue = QValues[0][0][0][0][0];
+        float highestValue = 0;
 
         for(int xState = 0; xState < battleFieldXStateCount; xState++)
         {
@@ -461,6 +462,7 @@ public class QLearningRobot extends AdvancedRobot {
                 }
             }
         }
+        System.out.println(highestValue);
         for(int xState = 0; xState < battleFieldXStateCount; xState++)
         {
             for(int yState =0; yState < battleFieldYStateCount; yState++)
@@ -473,7 +475,7 @@ public class QLearningRobot extends AdvancedRobot {
                         {
                             if(QValues[xState][yState][enemyBearingState][enemyDistanceState][action] > highestValue)
                             {
-                                QValues[xState][yState][enemyBearingState][enemyDistanceState][action] = (QValues[xState][yState][enemyBearingState][enemyDistanceState][action] / highestValue);
+                                QValues[xState][yState][enemyBearingState][enemyDistanceState][action] = (float)round((double)(QValues[xState][yState][enemyBearingState][enemyDistanceState][action] / highestValue),2);
                             }
                         }
                     }
