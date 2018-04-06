@@ -466,7 +466,6 @@ public class QLearningRobot extends AdvancedRobot {
                 }
             }
         }
-        System.out.println(highestValue);
         for(int xState = 0; xState < battleFieldXStateCount; xState++)
         {
             for(int yState =0; yState < battleFieldYStateCount; yState++)
