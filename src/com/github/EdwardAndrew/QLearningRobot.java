@@ -478,7 +478,7 @@ public class QLearningRobot extends AdvancedRobot {
                         {
                             if(QValues[xState][yState][enemyBearingState][enemyDistanceState][action] > highestValue)
                             {
-                                QValues[xState][yState][enemyBearingState][enemyDistanceState][action] = (float)round((double)(QValues[xState][yState][enemyBearingState][enemyDistanceState][action] / highestValue),2);
+                                QValues[xState][yState][enemyBearingState][enemyDistanceState][action] = QValues[xState][yState][enemyBearingState][enemyDistanceState][action] / highestValue;
                             }
                         }
                     }
