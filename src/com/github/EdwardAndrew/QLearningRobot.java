@@ -381,7 +381,8 @@ public class QLearningRobot extends AdvancedRobot {
                             for(int action = 0; action < actionCount; action++)
                             {
                                 // Store the values rounded to 1 dp.
-                                printStream.println(round((double)QValues[x][y][enemyBearing][enemyDistance][action], 1));
+                                String token = Double.toString(round(QValues[x][y][enemyBearing][enemyDistance][action], 2));
+                                printStream.println(token);
                             }
                         }
                     }
@@ -457,9 +458,10 @@ public class QLearningRobot extends AdvancedRobot {
                     {
                         for(int action = 0; action < actionCount; action++)
                         {
-                            if(QValues[xState][yState][enemyBearingState][enemyDistanceState][action] > highestValue)
+                            float absValue = (float)Math.abs(QValues[xState][yState][enemyBearingState][enemyDistanceState][action]);
+                            if(absValue > highestValue)
                             {
-                                highestValue = Math.abs(QValues[xState][yState][enemyBearingState][enemyDistanceState][action]);
+                                highestValue = absValue;
                             }
                         }
                     }
@@ -476,15 +478,13 @@ public class QLearningRobot extends AdvancedRobot {
                     {
                         for(int action = 0; action < actionCount; action++)
                         {
-                            if(QValues[xState][yState][enemyBearingState][enemyDistanceState][action] > highestValue)
-                            {
-                                QValues[xState][yState][enemyBearingState][enemyDistanceState][action] = QValues[xState][yState][enemyBearingState][enemyDistanceState][action] / highestValue;
-                            }
+                            QValues[xState][yState][enemyBearingState][enemyDistanceState][action] =  QValues[xState][yState][enemyBearingState][enemyDistanceState][action] / highestValue;
                         }
                     }
                 }
             }
         }
+
 
 
     }
