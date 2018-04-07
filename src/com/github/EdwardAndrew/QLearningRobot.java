@@ -54,7 +54,7 @@ public class QLearningRobot extends AdvancedRobot {
         // Discount factor.
         float gamma = 0.9f;
         // Learning parameter.
-        float alpha = 0.1f;
+        float alpha = 0.5f;
 
         // load in Q values
         load();
@@ -95,8 +95,8 @@ public class QLearningRobot extends AdvancedRobot {
                 // Update the QValue.
                 // Q(St,At) = (1-alpha) * Q(St,At) + alpha * Rt + gamma * Max(Q(St+1,a))
                 QValues[currentEnemyXState][currentEnemyYState][lastEnemyBearingState][lastEnemyDistanceState][action] =
-                        (1 - alpha) * (QValues[currentEnemyXState][currentEnemyYState][lastEnemyBearingState][lastEnemyDistanceState][action]) +
-                                alpha * reward + gamma * getMaximumQValueForState(outcomeXPositionState, outcomeYPositionState, enemyBearingState, enemyDistanceState);
+                        (1 - alpha) * ((QValues[currentEnemyXState][currentEnemyYState][lastEnemyBearingState][lastEnemyDistanceState][action]) +
+                                alpha * (reward + (gamma * getMaximumQValueForState(outcomeXPositionState, outcomeYPositionState, enemyBearingState, enemyDistanceState))));
 
                 xState = outcomeXPositionState;
                 yState = outcomeYPositionState;
@@ -478,7 +478,7 @@ public class QLearningRobot extends AdvancedRobot {
                     {
                         for(int action = 0; action < actionCount; action++)
                         {
-                            QValues[xState][yState][enemyBearingState][enemyDistanceState][action] =  QValues[xState][yState][enemyBearingState][enemyDistanceState][action] / highestValue;
+                            QValues[xState][yState][enemyBearingState][enemyDistanceState][action] =  (QValues[xState][yState][enemyBearingState][enemyDistanceState][action] / highestValue)*99.99f;
                         }
                     }
                 }
