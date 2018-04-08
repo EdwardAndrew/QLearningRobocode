@@ -271,7 +271,6 @@ public class QLearningRobot extends AdvancedRobot {
             execute();
             ahead(100);
         }
-
     }
 
     /**
@@ -484,9 +483,6 @@ public class QLearningRobot extends AdvancedRobot {
                 }
             }
         }
-
-
-
     }
 
     /**
@@ -590,6 +586,4 @@ public class QLearningRobot extends AdvancedRobot {
         double gridXSize = battleFieldSize / totalQuantisedValues;
         return (int)Math.floor( position / gridXSize );
     }
-
-
 }
