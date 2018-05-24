@@ -1,5 +1,5 @@
 # Robocode QLearning Robot
-This `AdvancedRobot` was created using IntelliJ, Robocode Version 1.9.3.1 (17-03-2018) and JDK 1.8.
+This `AdvancedRobot` was created using IntelliJ, [Robocode](http://robocode.sourceforge.net) Version 1.9.3.1 (17-03-2018) and JDK 1.8.
 
 QLearning controls the movement of the robot. The aiming, firing and scanning is programmed.
 
